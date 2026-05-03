@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #f8fafc;
+  color: #101828;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+button,
+a,
+input,
+textarea {
+  border-radius: 2px;
+}
+
+
+@keyframes brandRibbonScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.brand-ribbon-track {
+  animation: brandRibbonScroll 48s linear infinite;
+}
+
+.brand-ribbon-track:hover {
+  animation-play-state: paused;
+}
+
+.brand-ribbon-mask {
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-entrance {
+  animation: fadeSlideUp 700ms ease-out both;
+}
+
+.hero-entrance-stagger > * {
+  animation: fadeSlideUp 650ms ease-out both;
+}
+
+.hero-entrance-stagger > *:nth-child(1) {
+  animation-delay: 80ms;
+}
+
+.hero-entrance-stagger > *:nth-child(2) {
+  animation-delay: 170ms;
+}
+
+.hero-entrance-stagger > *:nth-child(3) {
+  animation-delay: 260ms;
+}
+
+.hero-entrance-stagger > *:nth-child(4) {
+  animation-delay: 350ms;
+}
+
+.reveal-on-scroll {
+  animation: fadeSlideUp 650ms ease-out both;
+  animation-timeline: view();
+  animation-range: entry 10% cover 28%;
+}
+
+@supports not (animation-timeline: view()) {
+  .reveal-on-scroll {
+    animation: fadeSlideUp 650ms ease-out both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+
+  .brand-ribbon-track,
+  .hero-slide {
+    animation: none !important;
+  }
+
+  .hero-slide:not(:first-child) {
+    opacity: 0 !important;
+  }
+
+  .hero-slide:first-child {
+    opacity: 1 !important;
+  }
+}
+
+
+@keyframes heroSlideFade {
+  0%, 22% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  28%, 94% {
+    opacity: 0;
+    transform: scale(1.045);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-slide {
+  opacity: 0;
+  animation: heroSlideFade 20s ease-in-out infinite;
+}
+
+.hero-slide:first-child {
+  opacity: 1;
+}

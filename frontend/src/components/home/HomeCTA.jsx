@@ -37,12 +37,12 @@ export default function HomeCTA() {
             <h3 className="text-2xl font-black">Business Hours</h3>
             <div className="mt-6 grid gap-4 text-lg">
               <div className="flex items-center justify-between gap-4">
-                <span>Monday - Saturday</span>
-                <span className="font-bold">10:00 AM - 7:00 PM</span>
+                <span>{SITE.businessHours.days}</span>
+                <span className="font-bold">{SITE.businessHours.time}</span>
               </div>
               <div className="flex items-center justify-between gap-4">
-                <span>Sunday</span>
-                <span className="font-bold">Closed</span>
+                <span>{SITE.businessHours.closedDay}</span>
+                <span className="font-bold">{SITE.businessHours.closedStatus}</span>
               </div>
             </div>
           </div>

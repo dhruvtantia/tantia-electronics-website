@@ -7,7 +7,7 @@ export const categories = [
     longDescription:
       "Source wires and cables for electrical contractors, panel builders, maintenance teams and dealer counters with catalogue-backed product discovery.",
     productLines: ["Single core wires", "Multi-core cables", "Flexible cables", "Industrial wiring", "Panel wiring"],
-    relatedBrands: ["sgi-wires", "novoflex"],
+    relatedBrands: ["sgi-wires", "novoflex", "woer", "brisk", "venus-switches"],
     catalogueUrl: "/placeholder-catalogue.pdf",
     featured: true,
     sortOrder: 1,
@@ -20,7 +20,7 @@ export const categories = [
     longDescription:
       "Browse switch product ranges for trade counters, projects, repairs and industrial electrical supply requirements.",
     productLines: ["Control switches", "Panel switches", "Selector switches", "Toggle switches", "Industrial switches"],
-    relatedBrands: ["bke", "namolectric-controls"],
+    relatedBrands: ["bke", "namolectric-controls", "china-lema", "brisk", "venus-switches", "calonix", "elcon-india"],
     catalogueUrl: "/placeholder-catalogue.pdf",
     featured: true,
     sortOrder: 2,
@@ -33,7 +33,7 @@ export const categories = [
     longDescription:
       "Find fuse product lines for panels, maintenance, industrial procurement and replacement requirements.",
     productLines: ["Cartridge fuses", "HRC fuses", "Fuse holders", "Panel fuses", "Protection accessories"],
-    relatedBrands: ["bke", "namolectric-controls"],
+    relatedBrands: ["bke", "namolectric-controls", "calonix", "brisk"],
     catalogueUrl: "/placeholder-catalogue.pdf",
     featured: true,
     sortOrder: 3,
@@ -46,7 +46,7 @@ export const categories = [
     longDescription:
       "Source circuit breakers and protection products for panels, electrical contractors, dealers and industrial buyers.",
     productLines: ["MCBs", "MCCBs", "RCCBs", "Distribution protection", "Breaker accessories"],
-    relatedBrands: ["bke"],
+    relatedBrands: ["bke", "brisk", "venus-switches"],
     catalogueUrl: "/placeholder-catalogue.pdf",
     featured: true,
     sortOrder: 4,
@@ -59,7 +59,7 @@ export const categories = [
     longDescription:
       "Browse connector product ranges for electronic components, panels, repairs and industrial electrical supply.",
     productLines: ["Terminal connectors", "Cable connectors", "PCB connectors", "Industrial connectors", "Connector accessories"],
-    relatedBrands: ["novoflex", "vky", "elcon-industries", "gilard-electronics"],
+    relatedBrands: ["novoflex", "vky", "elcon-india", "gilard-electronics", "union-connectors", "venus-switches", "calonix", "brisk"],
     catalogueUrl: "/placeholder-catalogue.pdf",
     featured: true,
     sortOrder: 5,
@@ -72,7 +72,7 @@ export const categories = [
     longDescription:
       "Find precision components and associated product lines for OEM, maintenance, workshop and industrial procurement teams.",
     productLines: ["Precision accessories", "Tooling products", "Soldering accessories", "Electrical spares", "Technical components"],
-    relatedBrands: ["multitec-tools", "vky", "soldron", "gilard-electronics"],
+    relatedBrands: ["multitec-tools", "vky", "pankaj-potentiometers", "gilard-electronics", "elcon-india"],
     catalogueUrl: "/placeholder-catalogue.pdf",
     featured: true,
     sortOrder: 6,
@@ -85,7 +85,7 @@ export const categories = [
     longDescription:
       "Source industrial electrical goods across categories for contractors, dealers, panel builders and maintenance buyers.",
     productLines: ["Panel accessories", "Electrical spares", "Industrial wiring products", "Distribution goods", "Maintenance supplies"],
-    relatedBrands: ["sgi-wires", "multitec-tools", "novoflex", "elcon-industries", "namolectric-controls"],
+    relatedBrands: ["sgi-wires", "multitec-tools", "novoflex", "elcon-india", "namolectric-controls", "calonix", "china-lema", "woer", "brisk", "venus-switches", "union-connectors"],
     catalogueUrl: "/placeholder-catalogue.pdf",
     featured: true,
     sortOrder: 7,
@@ -98,7 +98,7 @@ export const categories = [
     longDescription:
       "Browse electronic component product ranges for OEMs, repair teams, dealers, procurement teams and industrial buyers.",
     productLines: ["Electronic spares", "Soldering products", "PCB accessories", "Connectors", "Component accessories"],
-    relatedBrands: ["vky", "elcon-industries", "soldron", "gilard-electronics"],
+    relatedBrands: ["vky", "elcon-india", "gilard-electronics", "calonix", "pankaj-potentiometers", "woer", "union-connectors", "china-lema"],
     catalogueUrl: "/placeholder-catalogue.pdf",
     featured: true,
     sortOrder: 8,

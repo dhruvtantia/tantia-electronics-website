@@ -3,9 +3,17 @@ import { toast } from "sonner";
 import Button from "../common/Button";
 import { submitEnquiry } from "../../services/enquiries";
 import { trackEnquirySubmit } from "../../services/analytics";
+import { getLeadJourneySnapshot } from "../../services/journey";
 
 const initial = { fullName: "", company: "", email: "", phone: "", message: "" };
 const emailPattern = /^[^\s@]{2,}@[^\s@.]+(\.[^\s@.]+)+$/;
+
+function normalizePhoneInput(value) {
+  let digits = value.replace(/\D/g, "");
+  if (digits.length === 12 && digits.startsWith("91")) digits = digits.slice(2);
+  if (digits.length === 11 && digits.startsWith("0")) digits = digits.slice(1);
+  return digits.slice(0, 10);
+}
 
 export default function EnquiryForm({ type = "general", relatedBrand = null, relatedCategory = null, sourcePage = "", defaultMessage = "" }) {
   const [form, setForm] = useState({ ...initial, message: defaultMessage });
@@ -13,7 +21,7 @@ export default function EnquiryForm({ type = "general", relatedBrand = null, rel
 
   function updateField(event) {
     const { name, value } = event.target;
-    const nextValue = name === "phone" ? value.replace(/\D/g, "").slice(0, 10) : value;
+    const nextValue = name === "phone" ? normalizePhoneInput(value) : value;
     setForm((current) => ({ ...current, [name]: nextValue }));
   }
 
@@ -39,7 +47,7 @@ export default function EnquiryForm({ type = "general", relatedBrand = null, rel
     }
     setSubmitting(true);
     try {
-      await submitEnquiry({ type, relatedBrand, relatedCategory, sourcePage, ...form, email: form.email.trim() });
+      await submitEnquiry({ type, relatedBrand, relatedCategory, sourcePage, ...form, email: form.email.trim(), ...getLeadJourneySnapshot() });
       trackEnquirySubmit(type);
       toast.success("Thank you. Your enquiry has been sent. We will get back to you shortly.");
       setForm({ ...initial, message: defaultMessage });
@@ -67,19 +75,7 @@ export default function EnquiryForm({ type = "general", relatedBrand = null, rel
           pattern="[^\s@]{2,}@[^\s@.]+(\.[^\s@.]+)+"
           title="Enter a valid email address, for example name@company.com"
         />
-        <Field
-          label="Phone *"
-          name="phone"
-          type="tel"
-          value={form.phone}
-          onChange={updateField}
-          required
-          autoComplete="tel"
-          inputMode="numeric"
-          pattern="\d{10}"
-          maxLength={10}
-          title="Enter a 10-digit phone number"
-        />
+        <PhoneField value={form.phone} onChange={updateField} />
         <label className="grid gap-2 text-sm font-bold text-navy">
           Message *
           <textarea
@@ -105,6 +101,31 @@ function Field({ label, ...props }) {
     <label className="grid gap-2 text-sm font-bold text-navy">
       {label}
       <input className="border border-border px-4 py-3 font-normal text-navy outline-none focus:border-brandRed" {...props} />
+    </label>
+  );
+}
+
+function PhoneField({ value, onChange }) {
+  return (
+    <label className="grid gap-2 text-sm font-bold text-navy">
+      Phone *
+      <div className="flex overflow-hidden border border-border bg-white focus-within:border-brandRed">
+        <span className="flex min-w-20 items-center justify-center border-r border-border bg-offWhite px-4 font-bold text-navy">+91</span>
+        <input
+          className="min-w-0 flex-1 px-4 py-3 font-normal text-navy outline-none"
+          name="phone"
+          type="tel"
+          value={value}
+          onChange={onChange}
+          required
+          autoComplete="tel-national"
+          inputMode="numeric"
+          pattern="\d{10}"
+          maxLength={10}
+          placeholder="9810083392"
+          title="Enter a 10-digit phone number without +91"
+        />
+      </div>
     </label>
   );
 }

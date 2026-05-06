@@ -19,8 +19,12 @@ export default function BrandRibbon({ brands }) {
               aria-label={`View ${brand.name}`}
             >
               <p className="line-clamp-2 min-h-10 text-base font-black leading-5 text-white">{brand.name}</p>
-              <div className="flex h-28 w-56 items-center justify-center rounded-lg border border-white/20 bg-white/95 p-4">
-                <img src={brand.logoUrl} alt={`${brand.name} logo`} className="max-h-full max-w-full object-contain" />
+              <div className="flex h-28 w-56 items-center justify-center rounded-lg border border-white/20 bg-white/95 p-4 text-3xl font-black text-navy">
+                {brand.logoUrl ? (
+                  <img src={brand.logoUrl} alt={`${brand.name} logo`} className="max-h-full max-w-full object-contain" />
+                ) : (
+                  brand.abbreviation
+                )}
               </div>
               <p className="line-clamp-2 min-h-12 text-sm leading-6 text-slate-200">{brand.tagline || brand.shortDescription}</p>
             </Link>

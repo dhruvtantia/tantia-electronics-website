@@ -15,25 +15,25 @@ export default function Contact() {
           <SectionHeader
             eyebrow="Contact"
             title="Let's talk products, catalogues and quotations."
-            body="Send us your enquiry, request a brand catalogue, or ask for a quotation. Our team responds Monday-Saturday between business hours."
+            body={`Send us your enquiry, request a brand catalogue, or ask for a quotation. Our team responds ${SITE.businessHours.days} during business hours.`}
           />
         </div>
       </section>
       <section className="bg-white py-20">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 md:px-10 lg:grid-cols-[1fr_520px] lg:px-16">
           <div className="space-y-5">
-            <ContactCard icon={<MapPin />} title="Address">{SITE.address}, India</ContactCard>
+            <ContactCard icon={<MapPin />} title="Address"><a href={SITE.mapUrl} target="_blank" rel="noreferrer" className="font-bold text-navy">{SITE.address}</a></ContactCard>
             <ContactCard icon={<Phone />} title="Phone & WhatsApp">
-              <a href={`tel:${SITE.phone}`} className="font-bold text-navy">{SITE.phone}</a>
+              <a href={`tel:${SITE.phoneRaw}`} className="font-bold text-navy">{SITE.phone}</a>
               <br />WhatsApp: {SITE.whatsapp}
             </ContactCard>
             <ContactCard icon={<Mail />} title="Email">
               <a href={`mailto:${SITE.email}`} className="font-bold text-navy">{SITE.email}</a>
             </ContactCard>
-            <ContactCard title="Business Hours">{SITE.businessHours}<br />Sunday closed</ContactCard>
+            <ContactCard title="Business Hours">{SITE.businessHours.label}<br />{SITE.businessHours.closedDay} {SITE.businessHours.closedStatus.toLowerCase()}</ContactCard>
             <div className="border border-dashed border-border bg-offWhite p-8 text-center font-black uppercase tracking-wide text-mutedText">
-              Google Maps Placeholder<br />
-              <span className="text-sm font-semibold normal-case tracking-normal">Embed map here once coordinates are finalized.</span>
+              Open Google Maps<br />
+              <a href={SITE.mapUrl} target="_blank" rel="noreferrer" className="text-sm font-semibold normal-case tracking-normal text-brandRed">View shop location</a>
             </div>
             <div className="bg-navy p-8 text-white">
               <p className="text-xs font-black uppercase tracking-[0.2em] text-yellow">Prefer WhatsApp?</p>

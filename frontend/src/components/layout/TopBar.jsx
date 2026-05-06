@@ -9,7 +9,7 @@ export default function TopBar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-2 md:px-10 lg:px-16">
         <span>B2B Distribution • Delhi & Pan-India</span>
         <div className="hidden items-center gap-5 sm:flex">
-          <a className="flex items-center gap-2 hover:text-white" href={`tel:${SITE.phone}`} onClick={() => trackEvent(TRACKING_EVENTS.phoneClick)}>
+          <a className="flex items-center gap-2 hover:text-white" href={`tel:${SITE.phoneRaw}`} onClick={() => trackEvent(TRACKING_EVENTS.phoneClick)}>
             <Phone size={13} /> {SITE.phone}
           </a>
           <a className="flex items-center gap-2 hover:text-white" href={`mailto:${SITE.email}`} onClick={() => trackEvent(TRACKING_EVENTS.emailClick)}>

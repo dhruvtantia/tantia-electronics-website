@@ -44,8 +44,8 @@ export default function Footer() {
         <div>
           <h3 className="text-xl font-black uppercase tracking-wide">Contact</h3>
           <div className="mt-5 space-y-4 text-base leading-7 text-slate-300">
-            <p>{SITE.businessHours}</p>
-            <p>Sunday closed</p>
+            <p>{SITE.businessHours.label}</p>
+            <p>{SITE.businessHours.closedDay} {SITE.businessHours.closedStatus.toLowerCase()}</p>
             <p>Send product requirements, catalogue requests, or quotation enquiries directly on WhatsApp.</p>
           </div>
           <WhatsAppButton context="footer" className="mt-6 w-full" />
@@ -54,8 +54,8 @@ export default function Footer() {
       <div className="mx-auto flex max-w-7xl flex-col gap-4 border-t border-white/10 px-6 py-6 text-sm text-slate-400 md:flex-row md:items-center md:justify-between md:px-10 lg:px-16">
         <p>© 2026 {SITE.businessName}. All rights reserved.</p>
         <div className="flex gap-6">
-          <Link to="/contact" className="hover:text-white">Privacy Policy</Link>
-          <Link to="/contact" className="hover:text-white">Terms of Service</Link>
+          <Link to="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
+          <Link to="/terms-of-service" className="hover:text-white">Terms of Service</Link>
         </div>
       </div>
     </footer>

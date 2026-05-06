@@ -1,6 +1,10 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export async function apiRequest(path, options = {}) {
+  if (!API_BASE_URL) {
+    throw new Error("API base URL is not configured. Set VITE_API_BASE_URL for this environment.");
+  }
+
   const response = await fetch(`${API_BASE_URL}${path}`, {
     headers: {
       "Content-Type": "application/json",
@@ -11,7 +15,8 @@ export async function apiRequest(path, options = {}) {
 
   const payload = await response.json().catch(() => null);
   if (!response.ok) {
-    throw new Error(payload?.detail || payload?.message || "API request failed");
+    const detail = Array.isArray(payload?.detail) ? payload.detail.map((item) => item.msg).join(" ") : payload?.detail;
+    throw new Error(detail || payload?.message || "API request failed");
   }
   return payload;
 }

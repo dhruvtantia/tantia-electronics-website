@@ -2,17 +2,21 @@ from functools import lru_cache
 
 from app.config import get_settings
 from app.repositories.enquiry_repository import EnquiryRepository
+from app.services.notification_service import NotificationService, get_notification_service
 from app.repositories.mongo_enquiry_repository import MongoEnquiryRepository
 from app.repositories.sheets_enquiry_repository import GoogleSheetsEnquiryRepository
 from app.schemas.enquiry import EnquiryCreate, EnquiryResponse
 
 
 class EnquiryService:
-    def __init__(self, repository: EnquiryRepository):
+    def __init__(self, repository: EnquiryRepository, notification_service: NotificationService):
         self.repository = repository
+        self.notification_service = notification_service
 
     async def create_enquiry(self, payload: EnquiryCreate) -> EnquiryResponse:
-        return await self.repository.create(payload)
+        enquiry = await self.repository.create(payload)
+        await self.notification_service.notify_new_enquiry(enquiry)
+        return enquiry
 
     async def list_enquiries(self) -> list[EnquiryResponse]:
         return await self.repository.list()
@@ -32,4 +36,4 @@ def get_enquiry_repository() -> EnquiryRepository:
 
 
 def get_enquiry_service() -> EnquiryService:
-    return EnquiryService(get_enquiry_repository())
+    return EnquiryService(get_enquiry_repository(), get_notification_service())

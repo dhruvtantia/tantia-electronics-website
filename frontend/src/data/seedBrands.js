@@ -13,6 +13,7 @@ export const brands = [
     manufacturerWebsite: "",
     featured: true,
     sortOrder: 1,
+    featuredProducts: [],
   },
   {
     name: "Multitec Tools",
@@ -28,6 +29,7 @@ export const brands = [
     manufacturerWebsite: "",
     featured: true,
     sortOrder: 2,
+    featuredProducts: [],
   },
   {
     name: "B.K. Electronics (BKE)",
@@ -43,6 +45,7 @@ export const brands = [
     manufacturerWebsite: "",
     featured: true,
     sortOrder: 3,
+    featuredProducts: [],
   },
   {
     name: "Novoflex",
@@ -58,6 +61,7 @@ export const brands = [
     manufacturerWebsite: "",
     featured: true,
     sortOrder: 4,
+    featuredProducts: [],
   },
   {
     name: "VKY",
@@ -73,6 +77,7 @@ export const brands = [
     manufacturerWebsite: "",
     featured: true,
     sortOrder: 5,
+    featuredProducts: [],
   },
   {
     name: "Elcon India",
@@ -88,6 +93,7 @@ export const brands = [
     manufacturerWebsite: "https://www.indiamart.com/elcon-india/profile.html",
     featured: true,
     sortOrder: 6,
+    featuredProducts: [],
   },
   {
     name: "Namolectric Controls",
@@ -103,6 +109,7 @@ export const brands = [
     manufacturerWebsite: "",
     featured: true,
     sortOrder: 7,
+    featuredProducts: [],
   },
   {
     name: "Gilard Electronics",
@@ -118,6 +125,7 @@ export const brands = [
     manufacturerWebsite: "",
     featured: true,
     sortOrder: 8,
+    featuredProducts: [],
   },
   {
     name: "Calonix",
@@ -133,6 +141,7 @@ export const brands = [
     manufacturerWebsite: "https://www.calonix.net/",
     featured: true,
     sortOrder: 9,
+    featuredProducts: [],
   },
   {
     name: "Lema Electric",
@@ -148,6 +157,7 @@ export const brands = [
     manufacturerWebsite: "https://www.chinalema.com/en.php",
     featured: true,
     sortOrder: 10,
+    featuredProducts: [],
   },
   {
     name: "Pankaj Potentiometers",
@@ -163,6 +173,7 @@ export const brands = [
     manufacturerWebsite: "https://www.indiamart.com/pankaj/",
     featured: true,
     sortOrder: 11,
+    featuredProducts: [],
   },
   {
     name: "Woer",
@@ -178,6 +189,7 @@ export const brands = [
     manufacturerWebsite: "https://en.woer.com/",
     featured: true,
     sortOrder: 12,
+    featuredProducts: [],
   },
   {
     name: "Brisk",
@@ -193,6 +205,7 @@ export const brands = [
     manufacturerWebsite: "https://www.indiamart.com/brisk/foot-switches.html",
     featured: true,
     sortOrder: 13,
+    featuredProducts: [],
   },
   {
     name: "Union Connectors",
@@ -208,6 +221,7 @@ export const brands = [
     manufacturerWebsite: "https://www.unionconnectors.in/products",
     featured: true,
     sortOrder: 14,
+    featuredProducts: [],
   },
   {
     name: "Venus Switches",
@@ -223,6 +237,7 @@ export const brands = [
     manufacturerWebsite: "https://www.indiamart.com/venusswitchgearindia/",
     featured: true,
     sortOrder: 15,
+    featuredProducts: [],
   },
 ];
 

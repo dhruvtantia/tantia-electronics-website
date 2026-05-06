@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import PageShell from "./components/layout/PageShell";
 import RouteTracker from "./components/common/RouteTracker";
+import ScrollToTop from "./components/common/ScrollToTop";
 import Home from "./pages/Home";
 import Brands from "./pages/Brands";
 import BrandDetail from "./pages/BrandDetail";
@@ -16,6 +17,7 @@ export default function App() {
   return (
     <>
       <RouteTracker />
+      <ScrollToTop />
       <Routes>
         <Route element={<PageShell />}>
           <Route index element={<Home />} />

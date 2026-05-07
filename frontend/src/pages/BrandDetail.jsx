@@ -6,17 +6,14 @@ import EnquiryForm from "../components/forms/EnquiryForm";
 import BrandDetailHero from "../components/brands/BrandDetailHero";
 import BrandOverview from "../components/brands/BrandOverview";
 import BrandCatalogueCTA from "../components/brands/BrandCatalogueCTA";
-import BrandProductCategories from "../components/brands/BrandProductCategories";
 import BrandFeaturedProducts from "../components/brands/BrandFeaturedProducts";
 import { getBrandBySlug } from "../data/seedBrands";
-import { categories } from "../data/seedCategories";
 import { SITE } from "../config/site";
 
 export default function BrandDetail() {
   const { brandSlug } = useParams();
   const brand = getBrandBySlug(brandSlug);
   if (!brand) return <NotFoundBrand />;
-  const relatedCategories = categories.filter((category) => brand.categories.includes(category.slug));
 
   return (
     <>
@@ -28,16 +25,19 @@ export default function BrandDetail() {
           <div className="grid gap-10 lg:grid-cols-[1fr_420px]">
             <div className="space-y-12">
               <BrandOverview brand={brand} />
-              <BrandProductCategories brand={brand} categories={relatedCategories} />
               <BrandFeaturedProducts brand={brand} />
               <BrandCatalogueCTA brand={brand} />
               <Link to="/brands" className="inline-block font-bold text-brandRed">← Back to all brands</Link>
             </div>
             <EnquiryForm
+              id="enquiry"
               type="brand"
               relatedBrand={brand.slug}
               sourcePage={`/brands/${brand.slug}`}
-              defaultMessage={`I am interested in ${brand.name} products. Please share availability and catalogue details.`}
+              title={`Request ${brand.name} catalogue`}
+              description="Share your requirement and our team will respond with the latest catalogue, availability and suitable product options."
+              defaultMessage={`I am interested in ${brand.name} products. Please share the latest catalogue, availability and suitable options.`}
+              submitLabel="Request Catalogue"
             />
           </div>
         </div>

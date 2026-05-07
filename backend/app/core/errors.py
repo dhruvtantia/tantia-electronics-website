@@ -4,3 +4,7 @@ class AppError(Exception):
 
 class ConfigurationError(AppError):
     pass
+
+
+class StorageError(AppError):
+    pass

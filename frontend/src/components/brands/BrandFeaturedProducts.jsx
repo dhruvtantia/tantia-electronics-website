@@ -6,10 +6,13 @@ export default function BrandFeaturedProducts({ brand }) {
 
   return (
     <section>
-      <SectionHeader eyebrow="Featured Products" title={`Selected ${brand.name} products.`} />
+      <SectionHeader
+        title="Products"
+        body="A focused selection from this brand range. Request the latest catalogue for complete options, availability and technical fit."
+      />
       <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-        {products.map((product) => (
-          <article key={`${brand.slug}-${product.name}`} className="flex h-full flex-col border border-border bg-white">
+        {products.map((product, index) => (
+          <article key={`${brand.slug}-${product.name}`} className={`${index >= 4 ? "hidden md:flex" : "flex"} h-full flex-col border border-border bg-white`}>
             <ProductImage product={product} brand={brand} />
             <div className="flex flex-1 flex-col p-5">
               {product.category && (

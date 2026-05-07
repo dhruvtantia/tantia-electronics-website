@@ -1,10 +1,15 @@
+import logging
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from app.api.routes import enquiries, health
 from app.config import get_settings
-from app.core.errors import ConfigurationError
+from app.core.errors import ConfigurationError, StorageError
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 settings = get_settings()
 
@@ -21,9 +26,28 @@ app.add_middleware(
 
 @app.exception_handler(ConfigurationError)
 async def configuration_error_handler(request: Request, exc: ConfigurationError):
+    logger.error("Configuration error on %s: %s", request.url.path, exc)
     return JSONResponse(
         status_code=503,
         content={"success": False, "message": str(exc)},
+    )
+
+
+@app.exception_handler(StorageError)
+async def storage_error_handler(request: Request, exc: StorageError):
+    logger.exception("Storage error on %s", request.url.path)
+    return JSONResponse(
+        status_code=503,
+        content={"success": False, "message": str(exc)},
+    )
+
+
+@app.exception_handler(Exception)
+async def unhandled_error_handler(request: Request, exc: Exception):
+    logger.exception("Unhandled API error on %s", request.url.path)
+    return JSONResponse(
+        status_code=500,
+        content={"success": False, "message": "Unable to process this request right now."},
     )
 
 app.include_router(health.router, prefix="/api", tags=["health"])

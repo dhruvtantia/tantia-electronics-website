@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import Button from "../common/Button";
 import { submitEnquiry } from "../../services/enquiries";
@@ -15,9 +15,31 @@ function normalizePhoneInput(value) {
   return digits.slice(0, 10);
 }
 
-export default function EnquiryForm({ type = "general", relatedBrand = null, relatedCategory = null, sourcePage = "", defaultMessage = "" }) {
+export default function EnquiryForm({
+  type = "general",
+  relatedBrand = null,
+  relatedCategory = null,
+  sourcePage = "",
+  defaultMessage = "",
+  id,
+  title,
+  description,
+  submitLabel = "Send Enquiry",
+}) {
   const [form, setForm] = useState({ ...initial, message: defaultMessage });
   const [submitting, setSubmitting] = useState(false);
+  const previousDefaultMessage = useRef(defaultMessage);
+
+  useEffect(() => {
+    setForm((current) => ({
+      ...current,
+      message:
+        current.message === previousDefaultMessage.current || !current.message
+          ? defaultMessage
+          : current.message,
+    }));
+    previousDefaultMessage.current = defaultMessage;
+  }, [defaultMessage]);
 
   function updateField(event) {
     const { name, value } = event.target;
@@ -59,7 +81,13 @@ export default function EnquiryForm({ type = "general", relatedBrand = null, rel
   }
 
   return (
-    <form onSubmit={handleSubmit} className="border border-border bg-white p-6 shadow-sm reveal-on-scroll">
+    <form id={id} onSubmit={handleSubmit} className="scroll-mt-24 border border-border bg-white p-6 shadow-sm reveal-on-scroll">
+      {(title || description) && (
+        <div className="mb-5">
+          {title && <h2 className="text-2xl font-black text-navy">{title}</h2>}
+          {description && <p className="mt-2 text-sm leading-6 text-mutedText">{description}</p>}
+        </div>
+      )}
       <div className="grid gap-4">
         <Field label="Full Name *" name="fullName" value={form.fullName} onChange={updateField} required autoComplete="name" />
         <Field label="Company" name="company" value={form.company} onChange={updateField} autoComplete="organization" />
@@ -89,7 +117,7 @@ export default function EnquiryForm({ type = "general", relatedBrand = null, rel
           />
         </label>
         <Button type="submit" disabled={submitting} icon={false} className="w-full">
-          {submitting ? "Sending..." : "Send Enquiry"}
+          {submitting ? "Sending..." : submitLabel}
         </Button>
       </div>
     </form>
@@ -121,7 +149,7 @@ function PhoneField({ value, onChange }) {
           autoComplete="tel-national"
           inputMode="numeric"
           pattern="\d{10}"
-          maxLength={10}
+          maxLength={16}
           placeholder="9810083392"
           title="Enter a 10-digit phone number without +91"
         />

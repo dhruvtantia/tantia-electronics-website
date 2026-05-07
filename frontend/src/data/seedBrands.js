@@ -1,3 +1,130 @@
+function product(name, category, description, imageUrl = "") {
+  return { name, category, description, imageUrl };
+}
+
+const draftFeaturedProducts = {
+  "sgi-wires": [
+    product("Building Wire Range", "Wires & Cables", "Wire options for residential, commercial and contractor supply requirements."),
+    product("Flexible Cable Options", "Wires & Cables", "Flexible cable lines for panels, equipment wiring and maintenance needs."),
+    product("Panel Wiring Products", "Industrial Electrical Goods", "Selected wiring options for panel builders and electrical projects."),
+    product("Distribution Cable Supply", "Wires & Cables", "Cable options for B2B buyers sourcing project and dealer requirements."),
+    product("Commercial Wiring Supply", "Wires & Cables", "Wiring options for commercial buildings, fit-outs and regular dealer demand."),
+    product("Electrical Installation Cables", "Industrial Electrical Goods", "Cable lines for contractors handling installation and maintenance work."),
+  ],
+  "multitec-tools": [
+    product("Cable Preparation Tools", "Precision Components", "Trade-ready tools for cable cutting, stripping and installation work."),
+    product("Crimping Tool Options", "Precision Components", "Tool options for connector, terminal and panel wiring requirements."),
+    product("Workshop Tool Sets", "Industrial Electrical Goods", "Curated tool sets for electrical counters, maintenance and project teams."),
+    product("Installation Accessories", "Industrial Electrical Goods", "Accessory options that support routine electrical installation workflows."),
+    product("Hand Tool Range", "Precision Components", "Practical tool options for workshop, dealer and field-service requirements."),
+    product("Electrical Maintenance Tools", "Industrial Electrical Goods", "Tool options for maintenance teams working on electrical assemblies."),
+  ],
+  bke: [
+    product("Fuse Holder Range", "Fuses", "Fuse holder options for panel, repair and protection requirements."),
+    product("Cartridge Fuse Options", "Fuses", "Fuse lines for maintenance buyers, dealers and electrical procurement teams."),
+    product("Panel Switch Products", "Switches", "Switch options for control panels and industrial electrical applications."),
+    product("Protection Accessories", "Circuit Breakers", "Supporting protection products for B2B sourcing requirements."),
+    product("Miniature Fuse Options", "Fuses", "Compact fuse options for electronic and electrical protection requirements."),
+    product("Switchgear Accessories", "Industrial Electrical Goods", "Accessory lines for panels, maintenance and electrical supply counters."),
+  ],
+  novoflex: [
+    product("Cable Tie Range", "Connectors", "Cable tie options for wiring management and industrial installation work."),
+    product("Wiring Accessories", "Industrial Electrical Goods", "Accessories for cable routing, fastening and electrical maintenance."),
+    product("Cable Management Products", "Wires & Cables", "Organized wiring support products for panel and project teams."),
+    product("Mounting Accessories", "Connectors", "Selected accessories for securing and managing wiring assemblies."),
+    product("Cable Marker Options", "Industrial Electrical Goods", "Identification and support options for organized wiring installations."),
+    product("Harness Support Products", "Wires & Cables", "Products for routing, bundling and supporting cable harness requirements."),
+  ],
+  vky: [
+    product("Electronic Spare Lines", "Electronic Components", "Component options for repair, OEM and technical sourcing needs."),
+    product("Connector Options", "Connectors", "Connector ranges for electrical, electronics and maintenance applications."),
+    product("Precision Accessories", "Precision Components", "Small-format component and accessory options for technical buyers."),
+    product("Control Component Supply", "Electronic Components", "Control and electronic component options available on request."),
+    product("PCB Accessory Options", "Electronic Components", "Accessory lines for electronic assembly, repair and procurement needs."),
+    product("Technical Component Range", "Precision Components", "Precision component options for workshops, OEMs and service teams."),
+  ],
+  "elcon-india": [
+    product("Terminal Block Range", "Industrial Electrical Goods", "Terminal block options for panel, control and distribution applications."),
+    product("PCB Connector Options", "Electronic Components", "Connector lines for electronics, PCB and assembly requirements."),
+    product("DIN Rail Accessories", "Precision Components", "Supporting accessories for panel wiring and industrial electrical systems."),
+    product("Industrial Connector Supply", "Connectors", "Connector options for dependable industrial wiring and equipment use."),
+    product("Panel Terminal Accessories", "Industrial Electrical Goods", "Accessories for terminal wiring, panel assembly and maintenance work."),
+    product("Interface Connector Options", "Connectors", "Connector options for control, PCB and industrial applications."),
+  ],
+  "namolectric-controls": [
+    product("Control Switch Range", "Switches", "Control switch options for panels, machines and industrial requirements."),
+    product("Fuse Base Options", "Fuses", "Fuse and holder options for electrical protection applications."),
+    product("Electromechanical Components", "Industrial Electrical Goods", "Reliable component options for control and equipment assemblies."),
+    product("Panel Accessories", "Industrial Electrical Goods", "Supporting products for panel builders and maintenance buyers."),
+    product("Rotary Switch Options", "Switches", "Switch options for practical panel and control use cases."),
+    product("Protection Component Range", "Fuses", "Component options for fuse, control and protection assemblies."),
+  ],
+  "gilard-electronics": [
+    product("PCB Connector Range", "Connectors", "Connector options for PCB assemblies and electronics sourcing."),
+    product("Terminal Connector Options", "Connectors", "Terminal connector lines for electrical and electronic applications."),
+    product("Precision Component Supply", "Precision Components", "Component options for OEM, maintenance and repair requirements."),
+    product("Electronic Accessories", "Electronic Components", "Accessory options for workshops, dealers and technical buyers."),
+    product("Board-Level Components", "Electronic Components", "Component options for board assemblies and repair requirements."),
+    product("Signal Connector Options", "Connectors", "Connector options for compact electronic and industrial applications."),
+  ],
+  calonix: [
+    product("Toggle Switch Range", "Switches", "Toggle switch options for control, panel and equipment applications."),
+    product("Rocker Switch Options", "Switches", "Rocker switch lines for electrical and electronic product needs."),
+    product("Push Button Switches", "Switches", "Push button switch options for practical control applications."),
+    product("Fuse Holders & Terminals", "Fuses", "Selected fuse holder, terminal and connector products available on request."),
+    product("Micro Switch Options", "Switches", "Switch options for compact control and equipment requirements."),
+    product("Connector & Terminal Range", "Connectors", "Connector and terminal options for electrical component sourcing."),
+  ],
+  "china-lema": [
+    product("Micro Switch Range", "Switches", "Micro switch options for automation, control and equipment requirements."),
+    product("Limit Switch Options", "Switches", "Limit switch lines for machinery and industrial control applications."),
+    product("Control Switch Products", "Industrial Electrical Goods", "Switch and control component options for technical buyers."),
+    product("Switch Accessories", "Electronic Components", "Supporting accessories for industrial switch and control assemblies."),
+    product("Foot Switch Options", "Switches", "Switch options for machinery, operator control and industrial requirements."),
+    product("Automation Switch Supply", "Industrial Electrical Goods", "Control switch options for automation and equipment maintenance needs."),
+  ],
+  "pankaj-potentiometers": [
+    product("Rotary Potentiometers", "Precision Components", "Potentiometer options for electronics, repair and control applications."),
+    product("Preset Potentiometer Options", "Electronic Components", "Compact adjustment component options for technical sourcing needs."),
+    product("Panel Control Components", "Precision Components", "Control component options for panels, instruments and assemblies."),
+    product("Precision Electronic Parts", "Electronic Components", "Draft product lines pending final catalogue and supplier verification."),
+    product("Variable Resistor Options", "Precision Components", "Adjustment component options for electronics and control assemblies."),
+    product("Knob & Control Accessories", "Electronic Components", "Accessories for potentiometer and panel control requirements."),
+  ],
+  woer: [
+    product("Heat Shrink Sleeves", "Wires & Cables", "Insulation sleeve options for cable protection and electrical maintenance."),
+    product("Cable Accessory Range", "Industrial Electrical Goods", "Accessory options for wiring, insulation and industrial cable work."),
+    product("Insulation Tubing", "Electronic Components", "Tubing options for electrical insulation and component protection needs."),
+    product("Wiring Protection Products", "Wires & Cables", "Protection products for cable assemblies, panels and maintenance teams."),
+    product("Heat Shrink Tubing", "Wires & Cables", "Tubing options for cable marking, protection and electrical insulation work."),
+    product("Cable Jointing Accessories", "Industrial Electrical Goods", "Accessory options for cable maintenance and installation teams."),
+  ],
+  brisk: [
+    product("Contactor Options", "Switches", "Low-voltage control product options for industrial electrical requirements."),
+    product("HRC Fuse Fittings", "Fuses", "Fuse fitting options for panel builders and maintenance buyers."),
+    product("Power Connector Range", "Connectors", "Connector products for power distribution and industrial applications."),
+    product("Motor Control Products", "Industrial Electrical Goods", "Automation and motor control options available through enquiry."),
+    product("Overload Protection Options", "Circuit Breakers", "Protection product options for motor and panel requirements."),
+    product("Automation Product Supply", "Industrial Electrical Goods", "Automation product options for industrial electrical buyers."),
+  ],
+  "union-connectors": [
+    product("Terminal Block Range", "Connectors", "Terminal block options for power distribution and panel wiring needs."),
+    product("PCB Connector Options", "Electronic Components", "PCB connector lines for electronics and industrial assemblies."),
+    product("Wire-to-Board Connectors", "Connectors", "Connector options for practical board and wiring applications."),
+    product("Connector Accessories", "Industrial Electrical Goods", "Supporting connector accessories for B2B supply requirements."),
+    product("Pluggable Connector Options", "Connectors", "Connector lines for panel, PCB and industrial applications."),
+    product("Power Distribution Connectors", "Industrial Electrical Goods", "Connector options for practical power-distribution assemblies."),
+  ],
+  "venus-switches": [
+    product("Modular Switch Range", "Switches", "Modular switch options for residential, commercial and project requirements."),
+    product("Distribution Board Options", "Circuit Breakers", "Distribution board and protection product options available on request."),
+    product("Conduit Accessories", "Industrial Electrical Goods", "Conduit, fitting and junction accessory options for electrical work."),
+    product("Cable Tray Products", "Wires & Cables", "Cable tray and support products for installation and project teams."),
+    product("Electrical Accessory Range", "Industrial Electrical Goods", "Accessory options for projects, dealer counters and maintenance teams."),
+    product("PVC Fittings & Junction Boxes", "Connectors", "Fitting and junction box options for electrical installation requirements."),
+  ],
+};
+
 export const brands = [
   {
     name: "SGI Wires",
@@ -13,7 +140,7 @@ export const brands = [
     manufacturerWebsite: "",
     featured: true,
     sortOrder: 1,
-    featuredProducts: [],
+    featuredProducts: draftFeaturedProducts["sgi-wires"],
   },
   {
     name: "Multitec Tools",
@@ -29,7 +156,7 @@ export const brands = [
     manufacturerWebsite: "",
     featured: true,
     sortOrder: 2,
-    featuredProducts: [],
+    featuredProducts: draftFeaturedProducts["multitec-tools"],
   },
   {
     name: "B.K. Electronics (BKE)",
@@ -45,7 +172,7 @@ export const brands = [
     manufacturerWebsite: "",
     featured: true,
     sortOrder: 3,
-    featuredProducts: [],
+    featuredProducts: draftFeaturedProducts.bke,
   },
   {
     name: "Novoflex",
@@ -61,7 +188,7 @@ export const brands = [
     manufacturerWebsite: "",
     featured: true,
     sortOrder: 4,
-    featuredProducts: [],
+    featuredProducts: draftFeaturedProducts.novoflex,
   },
   {
     name: "VKY",
@@ -77,7 +204,7 @@ export const brands = [
     manufacturerWebsite: "",
     featured: true,
     sortOrder: 5,
-    featuredProducts: [],
+    featuredProducts: draftFeaturedProducts.vky,
   },
   {
     name: "Elcon India",
@@ -93,7 +220,7 @@ export const brands = [
     manufacturerWebsite: "https://www.indiamart.com/elcon-india/profile.html",
     featured: true,
     sortOrder: 6,
-    featuredProducts: [],
+    featuredProducts: draftFeaturedProducts["elcon-india"],
   },
   {
     name: "Namolectric Controls",
@@ -109,7 +236,7 @@ export const brands = [
     manufacturerWebsite: "",
     featured: true,
     sortOrder: 7,
-    featuredProducts: [],
+    featuredProducts: draftFeaturedProducts["namolectric-controls"],
   },
   {
     name: "Gilard Electronics",
@@ -125,7 +252,7 @@ export const brands = [
     manufacturerWebsite: "",
     featured: true,
     sortOrder: 8,
-    featuredProducts: [],
+    featuredProducts: draftFeaturedProducts["gilard-electronics"],
   },
   {
     name: "Calonix",
@@ -141,7 +268,7 @@ export const brands = [
     manufacturerWebsite: "https://www.calonix.net/",
     featured: true,
     sortOrder: 9,
-    featuredProducts: [],
+    featuredProducts: draftFeaturedProducts.calonix,
   },
   {
     name: "Lema Electric",
@@ -157,7 +284,7 @@ export const brands = [
     manufacturerWebsite: "https://www.chinalema.com/en.php",
     featured: true,
     sortOrder: 10,
-    featuredProducts: [],
+    featuredProducts: draftFeaturedProducts["china-lema"],
   },
   {
     name: "Pankaj Potentiometers",
@@ -173,7 +300,7 @@ export const brands = [
     manufacturerWebsite: "https://www.indiamart.com/pankaj/",
     featured: true,
     sortOrder: 11,
-    featuredProducts: [],
+    featuredProducts: draftFeaturedProducts["pankaj-potentiometers"],
   },
   {
     name: "Woer",
@@ -189,7 +316,7 @@ export const brands = [
     manufacturerWebsite: "https://en.woer.com/",
     featured: true,
     sortOrder: 12,
-    featuredProducts: [],
+    featuredProducts: draftFeaturedProducts.woer,
   },
   {
     name: "Brisk",
@@ -205,7 +332,7 @@ export const brands = [
     manufacturerWebsite: "https://www.indiamart.com/brisk/foot-switches.html",
     featured: true,
     sortOrder: 13,
-    featuredProducts: [],
+    featuredProducts: draftFeaturedProducts.brisk,
   },
   {
     name: "Union Connectors",
@@ -221,7 +348,7 @@ export const brands = [
     manufacturerWebsite: "https://www.unionconnectors.in/products",
     featured: true,
     sortOrder: 14,
-    featuredProducts: [],
+    featuredProducts: draftFeaturedProducts["union-connectors"],
   },
   {
     name: "Venus Switches",
@@ -237,7 +364,7 @@ export const brands = [
     manufacturerWebsite: "https://www.indiamart.com/venusswitchgearindia/",
     featured: true,
     sortOrder: 15,
-    featuredProducts: [],
+    featuredProducts: draftFeaturedProducts["venus-switches"],
   },
 ];
 

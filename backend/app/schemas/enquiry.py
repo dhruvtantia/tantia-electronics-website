@@ -24,7 +24,7 @@ class EnquiryCreate(BaseModel):
     fullName: str = Field(..., min_length=1, max_length=120)
     company: str | None = Field(default=None, max_length=160)
     email: EmailStr
-    phone: str = Field(..., min_length=10, max_length=10)
+    phone: str = Field(..., min_length=10, max_length=20)
     message: str = Field(..., min_length=1, max_length=3000)
     sourcePage: str | None = Field(default=None, max_length=300)
     visitorId: str | None = Field(default=None, max_length=120)

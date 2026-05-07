@@ -1,15 +1,16 @@
 import BrandLogo from "../common/BrandLogo";
 import Button from "../common/Button";
-import CatalogueButton from "../common/CatalogueButton";
+import CatalogueRequestButton from "../common/CatalogueRequestButton";
 import WhatsAppButton from "../common/WhatsAppButton";
 
 export default function BrandCard({ brand }) {
   const categoryLabels = brand.categories.slice(0, 3).map((category) => category.replaceAll("-", " "));
   const focusLine = brand.tagline || brand.shortDescription;
+  const enquiryPath = `/brands/${brand.slug}#enquiry`;
   const actions = (
     <>
       <Button to={`/brands/${brand.slug}`} variant="dark" className="rounded-md">View Products</Button>
-      <CatalogueButton href={brand.catalogueUrl} context={brand.slug} />
+      <CatalogueRequestButton to={enquiryPath} context={brand.slug} />
       <WhatsAppButton message={`I am interested in ${brand.name} products. Please share availability and catalogue details.`} context={brand.slug}>Enquire</WhatsAppButton>
     </>
   );
@@ -30,7 +31,7 @@ export default function BrandCard({ brand }) {
       </div>
       <div className="mt-5 flex items-center justify-between gap-4 text-xs font-black uppercase tracking-wide text-mutedText">
         <span>{brand.categories.length} Categories</span>
-        <span>Catalogue Ready</span>
+        <span>Catalogue on Request</span>
       </div>
       <div className="mt-4 flex flex-wrap gap-2">
         {categoryLabels.map((category) => <span key={category} className="rounded-full bg-orange/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-navy">{category}</span>)}

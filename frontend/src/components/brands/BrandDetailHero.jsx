@@ -1,5 +1,5 @@
 import BrandLogo from "../common/BrandLogo";
-import CatalogueButton from "../common/CatalogueButton";
+import CatalogueRequestButton from "../common/CatalogueRequestButton";
 import SectionLabel from "../common/SectionLabel";
 import WhatsAppButton from "../common/WhatsAppButton";
 
@@ -18,7 +18,7 @@ export default function BrandDetailHero({ brand }) {
           </div>
           <div className="flex flex-wrap gap-3">
             <WhatsAppButton message={`I am interested in ${brand.name} products. Please share availability and catalogue details.`} context={brand.slug} />
-            <CatalogueButton href={brand.catalogueUrl} context={brand.slug} />
+            <CatalogueRequestButton to={`/brands/${brand.slug}#enquiry`} context={brand.slug} />
             {brand.manufacturerWebsite && <a className="border border-border bg-white px-5 py-3 text-sm font-bold uppercase tracking-wide text-navy" href={brand.manufacturerWebsite}>Manufacturer Site</a>}
           </div>
         </div>

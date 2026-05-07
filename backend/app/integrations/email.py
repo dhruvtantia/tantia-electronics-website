@@ -1,8 +1,11 @@
 import json
+import logging
 import urllib.error
 import urllib.request
 
 from app.config import get_settings
+
+logger = logging.getLogger(__name__)
 
 
 class EmailClient:
@@ -17,6 +20,7 @@ class EmailClient:
 
     def send_email(self, subject: str, text: str, html: str | None = None) -> bool:
         if not self.enabled:
+            logger.info("Resend email notification skipped because email settings are incomplete")
             return False
 
         payload = {
@@ -39,7 +43,12 @@ class EmailClient:
         )
         try:
             with urllib.request.urlopen(request, timeout=10) as response:
-                return 200 <= response.status < 300
+                sent = 200 <= response.status < 300
+                if sent:
+                    logger.info("Sent enquiry notification email to %s", self.settings.enquiry_notification_to)
+                return sent
         except urllib.error.HTTPError as exc:
             detail = exc.read().decode("utf-8", errors="replace")
             raise RuntimeError(f"Resend email request failed: {exc.code} {detail}") from exc
+        except urllib.error.URLError as exc:
+            raise RuntimeError("Resend email request failed due to a network error") from exc

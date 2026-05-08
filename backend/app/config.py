@@ -14,10 +14,10 @@ class Settings(BaseSettings):
     google_sheets_worksheet_name: str = "Enquiries"
     google_service_account_json: str = ""
     google_service_account_json_base64: str = ""
-    cors_origins: str = Field(default="https://tantiaelectronics.com", validation_alias=AliasChoices("CORS_ORIGIN", "CORS_ORIGINS", "cors_origins"))
+    cors_origins: str = Field(default="", validation_alias=AliasChoices("CORS_ORIGIN", "CORS_ORIGINS", "cors_origins"))
     resend_api_key: str = ""
-    email_from: str = Field(default="Tantia Electronics Co. <enquiries@tantiaelectronics.com>", validation_alias=AliasChoices("FROM_EMAIL", "EMAIL_FROM", "email_from"))
-    enquiry_notification_to: str = Field(default="tantia442@gmail.com", validation_alias=AliasChoices("LEAD_NOTIFY_EMAIL", "ENQUIRY_NOTIFICATION_TO", "enquiry_notification_to"))
+    email_from: str = Field(default="", validation_alias=AliasChoices("FROM_EMAIL", "EMAIL_FROM", "email_from"))
+    enquiry_notification_to: str = Field(default="", validation_alias=AliasChoices("LEAD_NOTIFY_EMAIL", "ENQUIRY_NOTIFICATION_TO", "enquiry_notification_to"))
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 

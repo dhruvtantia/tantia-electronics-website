@@ -1,10 +1,14 @@
 from datetime import UTC, datetime
+import logging
 from uuid import uuid4
 import anyio
 
+from app.core.errors import ConfigurationError, StorageError
 from app.integrations.google_sheets import GoogleSheetsClient
 from app.repositories.enquiry_repository import EnquiryRepository
 from app.schemas.enquiry import EnquiryCreate, EnquiryResponse
+
+logger = logging.getLogger(__name__)
 
 
 SHEET_HEADERS = [
@@ -71,7 +75,15 @@ class GoogleSheetsEnquiryRepository(EnquiryRepository):
             createdAt=now,
             updatedAt=now,
         )
-        await anyio.to_thread.run_sync(self._append_enquiry, enquiry)
+        logger.info("Appending enquiry %s to Google Sheets", enquiry.id)
+        try:
+            await anyio.to_thread.run_sync(self._append_enquiry, enquiry)
+        except ConfigurationError:
+            raise
+        except Exception as exc:
+            logger.exception("Google Sheets append failed for enquiry %s", enquiry.id)
+            raise StorageError("Unable to save your enquiry right now. Please try again shortly.") from exc
+        logger.info("Google Sheets append succeeded for enquiry %s", enquiry.id)
         return enquiry
 
     async def list(self) -> list[EnquiryResponse]:
@@ -92,8 +104,8 @@ class GoogleSheetsEnquiryRepository(EnquiryRepository):
             enquiry.relatedCategory or "",
             enquiry.fullName,
             enquiry.company or "",
-            str(enquiry.email),
-            enquiry.phone,
+            str(enquiry.email) if enquiry.email else "",
+            enquiry.phone or "",
             enquiry.message,
             enquiry.sourcePage or "",
             enquiry.visitorId or "",

@@ -3,6 +3,7 @@ import PageShell from "./components/layout/PageShell";
 import RouteTracker from "./components/common/RouteTracker";
 import ScrollToTop from "./components/common/ScrollToTop";
 import AnalyticsScripts from "./components/common/AnalyticsScripts";
+import LocalBusinessSchema from "./components/common/LocalBusinessSchema";
 import Home from "./pages/Home";
 import Brands from "./pages/Brands";
 import BrandDetail from "./pages/BrandDetail";
@@ -18,6 +19,7 @@ export default function App() {
   return (
     <>
       <AnalyticsScripts />
+      <LocalBusinessSchema />
       <RouteTracker />
       <ScrollToTop />
       <Routes>

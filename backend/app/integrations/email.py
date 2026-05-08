@@ -48,7 +48,6 @@ class EmailClient:
                     logger.info("Sent enquiry notification email to %s", self.settings.enquiry_notification_to)
                 return sent
         except urllib.error.HTTPError as exc:
-            detail = exc.read().decode("utf-8", errors="replace")
-            raise RuntimeError(f"Resend email request failed: {exc.code} {detail}") from exc
+            raise RuntimeError(f"Resend email request failed with status {exc.code}") from exc
         except urllib.error.URLError as exc:
             raise RuntimeError("Resend email request failed due to a network error") from exc

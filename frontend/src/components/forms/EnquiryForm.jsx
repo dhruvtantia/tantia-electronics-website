@@ -48,13 +48,18 @@ export default function EnquiryForm({
   }
 
   function validateForm() {
-    if (!form.fullName.trim() || !form.email.trim() || !form.phone.trim() || !form.message.trim()) {
-      return "Please fill full name, email, phone and message.";
+    const email = form.email.trim();
+    const phone = form.phone.trim();
+    if (!form.fullName.trim() || !form.message.trim()) {
+      return "Please fill full name and message / product interest.";
     }
-    if (!emailPattern.test(form.email.trim())) {
+    if (!email && !phone) {
+      return "Please provide either a phone number or an email address so we can contact you.";
+    }
+    if (email && !emailPattern.test(email)) {
       return "Please enter a valid business email address, for example name@company.com.";
     }
-    if (!/^\d{10}$/.test(form.phone)) {
+    if (phone && !/^\d{10}$/.test(phone)) {
       return "Please enter a valid 10-digit phone number.";
     }
     return null;
@@ -69,7 +74,20 @@ export default function EnquiryForm({
     }
     setSubmitting(true);
     try {
-      await submitEnquiry({ type, relatedBrand, relatedCategory, sourcePage, ...form, email: form.email.trim(), ...getLeadJourneySnapshot() });
+      const email = form.email.trim();
+      const phone = form.phone.trim();
+      await submitEnquiry({
+        type,
+        relatedBrand,
+        relatedCategory,
+        sourcePage,
+        ...form,
+        fullName: form.fullName.trim(),
+        email: email || null,
+        phone: phone || null,
+        message: form.message.trim(),
+        ...getLeadJourneySnapshot(),
+      });
       trackEnquirySubmit(type);
       toast.success("Thank you. Your enquiry has been sent. We will get back to you shortly.");
       setForm({ ...initial, message: defaultMessage });
@@ -92,12 +110,11 @@ export default function EnquiryForm({
         <Field label="Full Name *" name="fullName" value={form.fullName} onChange={updateField} required autoComplete="name" />
         <Field label="Company" name="company" value={form.company} onChange={updateField} autoComplete="organization" />
         <Field
-          label="Email *"
+          label="Email (phone or email required)"
           name="email"
           type="email"
           value={form.email}
           onChange={updateField}
-          required
           autoComplete="email"
           inputMode="email"
           pattern="[^\s@]{2,}@[^\s@.]+(\.[^\s@.]+)+"
@@ -105,7 +122,7 @@ export default function EnquiryForm({
         />
         <PhoneField value={form.phone} onChange={updateField} />
         <label className="grid gap-2 text-sm font-bold text-navy">
-          Message *
+          Message / Product Interest *
           <textarea
             name="message"
             value={form.message}
@@ -136,7 +153,7 @@ function Field({ label, ...props }) {
 function PhoneField({ value, onChange }) {
   return (
     <label className="grid gap-2 text-sm font-bold text-navy">
-      Phone *
+      Phone (phone or email required)
       <div className="flex overflow-hidden border border-border bg-white focus-within:border-brandRed">
         <span className="flex min-w-20 items-center justify-center border-r border-border bg-offWhite px-4 font-bold text-navy">+91</span>
         <input
@@ -145,7 +162,6 @@ function PhoneField({ value, onChange }) {
           type="tel"
           value={value}
           onChange={onChange}
-          required
           autoComplete="tel-national"
           inputMode="numeric"
           pattern="\d{10}"

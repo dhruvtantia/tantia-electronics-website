@@ -19,9 +19,14 @@ class NotificationService:
         text = self._build_text(enquiry)
         html_body = self._build_html(enquiry)
         try:
-            return await anyio.to_thread.run_sync(self.email_client.send_email, subject, text, html_body)
+            sent = await anyio.to_thread.run_sync(self.email_client.send_email, subject, text, html_body)
+            if sent:
+                logger.info("Enquiry notification email sent for enquiry %s", enquiry.id)
+            else:
+                logger.info("Enquiry notification email skipped for enquiry %s", enquiry.id)
+            return sent
         except Exception:
-            logger.exception("Failed to send enquiry notification email")
+            logger.exception("Failed to send enquiry notification email for enquiry %s", enquiry.id)
             return False
 
     def _build_text(self, enquiry: EnquiryResponse) -> str:
@@ -38,24 +43,21 @@ class NotificationService:
 
     def _rows(self, enquiry: EnquiryResponse) -> list[tuple[str, str]]:
         return [
-            ("Name", enquiry.fullName),
-            ("Company", enquiry.company or "-"),
-            ("Email", str(enquiry.email)),
-            ("Phone", enquiry.phone),
+            ("Full name", enquiry.fullName),
+            ("Email", str(enquiry.email) if enquiry.email else "Not provided"),
+            ("Phone", enquiry.phone or "Not provided"),
+            ("Company", enquiry.company or "Not provided"),
+            ("Product interest / message", enquiry.message),
             ("Type", enquiry.type),
             ("Related brand", enquiry.relatedBrand or "-"),
             ("Related category", enquiry.relatedCategory or "-"),
             ("Source page", enquiry.sourcePage or "-"),
+            ("Timestamp", enquiry.createdAt.isoformat()),
             ("Landing page", enquiry.landingPage or "-"),
-            ("Referrer", enquiry.referrer or "-"),
             ("UTM source", enquiry.utmSource or "-"),
             ("UTM medium", enquiry.utmMedium or "-"),
             ("UTM campaign", enquiry.utmCampaign or "-"),
-            ("Visitor ID", enquiry.visitorId or "-"),
-            ("Session ID", enquiry.sessionId or "-"),
-            ("Created at", enquiry.createdAt.isoformat()),
             ("Journey", enquiry.journeySummary or "-"),
-            ("Message", enquiry.message),
         ]
 
 

@@ -1,6 +1,7 @@
 import logging
 
 from fastapi import FastAPI, Request
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
@@ -30,6 +31,15 @@ async def configuration_error_handler(request: Request, exc: ConfigurationError)
     return JSONResponse(
         status_code=503,
         content={"success": False, "message": str(exc)},
+    )
+
+
+@app.exception_handler(RequestValidationError)
+async def validation_error_handler(request: Request, exc: RequestValidationError):
+    logger.info("Validation error on %s", request.url.path)
+    return JSONResponse(
+        status_code=422,
+        content={"success": False, "message": "Please check the enquiry form and try again."},
     )
 
 

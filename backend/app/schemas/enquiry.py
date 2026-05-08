@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import Literal
-from pydantic import BaseModel, EmailStr, Field, field_validator
+from pydantic import BaseModel, EmailStr, Field, field_validator, model_validator
 
 EnquiryType = Literal["brand", "category", "general", "quote"]
 EnquiryStatus = Literal["new", "contacted", "closed"]
@@ -23,8 +23,8 @@ class EnquiryCreate(BaseModel):
     relatedCategory: str | None = None
     fullName: str = Field(..., min_length=1, max_length=120)
     company: str | None = Field(default=None, max_length=160)
-    email: EmailStr
-    phone: str = Field(..., min_length=10, max_length=20)
+    email: EmailStr | None = None
+    phone: str | None = Field(default=None, min_length=10, max_length=20)
     message: str = Field(..., min_length=1, max_length=3000)
     sourcePage: str | None = Field(default=None, max_length=300)
     visitorId: str | None = Field(default=None, max_length=120)
@@ -38,10 +38,32 @@ class EnquiryCreate(BaseModel):
     utmContent: str | None = Field(default=None, max_length=160)
     journeySummary: str | None = Field(default=None, max_length=2200)
 
+    @field_validator("email", mode="before")
+    @classmethod
+    def normalize_optional_email(cls, value: str | None) -> str | None:
+        if value is None or str(value).strip() == "":
+            return None
+        return str(value).strip()
+
     @field_validator("phone", mode="before")
     @classmethod
-    def validate_phone(cls, value: str) -> str:
+    def validate_phone(cls, value: str | None) -> str | None:
+        if value is None or str(value).strip() == "":
+            return None
         return normalize_indian_phone(value)
+
+    @field_validator("fullName", "message", mode="before")
+    @classmethod
+    def strip_required_text(cls, value: str | None) -> str:
+        if value is None:
+            return ""
+        return str(value).strip()
+
+    @model_validator(mode="after")
+    def validate_contact_method(self):
+        if not self.email and not self.phone:
+            raise ValueError("Please provide either a phone number or an email address")
+        return self
 
 
 class EnquiryResponse(BaseModel):
@@ -51,8 +73,8 @@ class EnquiryResponse(BaseModel):
     relatedCategory: str | None = None
     fullName: str
     company: str | None = None
-    email: EmailStr
-    phone: str
+    email: EmailStr | None = None
+    phone: str | None = None
     message: str
     sourcePage: str | None = None
     visitorId: str | None = None

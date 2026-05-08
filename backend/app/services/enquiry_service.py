@@ -1,4 +1,5 @@
 from functools import lru_cache
+import logging
 
 from app.config import get_settings
 from app.core.errors import ConfigurationError
@@ -6,6 +7,8 @@ from app.repositories.enquiry_repository import EnquiryRepository
 from app.services.notification_service import NotificationService, get_notification_service
 from app.repositories.sheets_enquiry_repository import GoogleSheetsEnquiryRepository
 from app.schemas.enquiry import EnquiryCreate, EnquiryResponse
+
+logger = logging.getLogger(__name__)
 
 
 class EnquiryService:
@@ -15,6 +18,7 @@ class EnquiryService:
 
     async def create_enquiry(self, payload: EnquiryCreate) -> EnquiryResponse:
         enquiry = await self.repository.create(payload)
+        logger.info("Lead created with enquiry id %s", enquiry.id)
         await self.notification_service.notify_new_enquiry(enquiry)
         return enquiry
 

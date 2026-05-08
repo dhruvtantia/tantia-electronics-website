@@ -6,12 +6,16 @@ React/Vite frontend and FastAPI backend for the Tantia Electronics Co. B2B catal
 
 The enquiry form posts to `POST /api/enquiries` through `frontend/src/services/enquiries.js`.
 
-Backend flow:
+Production flow:
 
-1. Validate and normalize the enquiry payload.
-2. Save the lead as a new row in the configured Google Sheet.
-3. Send a Resend notification email to `LEAD_NOTIFY_EMAIL`.
-4. Return success after the lead is saved, even if email notification fails.
+1. Customer fills the enquiry/contact form.
+2. Frontend validates full name, message / product interest, and phone or email.
+3. Frontend sends the form data to the backend API.
+4. Backend validates and normalizes the request.
+5. Backend saves the lead as a new row in the configured Google Sheet.
+6. Backend sends a Resend notification email to `LEAD_NOTIFY_EMAIL`.
+7. Backend returns success after the lead is saved, even if email notification fails.
+8. Frontend shows a clear success or error message.
 
 ## Backend: Render Deployment
 
@@ -27,17 +31,16 @@ Recommended settings:
 Required backend env vars:
 
 ```env
-ENQUIRY_STORAGE_PROVIDER=google_sheets
 GOOGLE_SHEETS_SPREADSHEET_ID=
-GOOGLE_SHEETS_WORKSHEET_NAME=Enquiries
 GOOGLE_SERVICE_ACCOUNT_JSON_BASE64=
-CORS_ORIGIN=https://tantiaelectronics.com,https://www.tantiaelectronics.com
+GOOGLE_SHEETS_WORKSHEET_NAME=Enquiries
 RESEND_API_KEY=
-FROM_EMAIL=Tantia Electronics Co. <enquiries@tantiaelectronics.com>
+FROM_EMAIL=enquiries@tantiaelectronics.com
 LEAD_NOTIFY_EMAIL=tantia442@gmail.com
+CORS_ORIGIN=
 ```
 
-To create `GOOGLE_SERVICE_ACCOUNT_JSON_BASE64`, base64-encode the service-account JSON locally and paste only the encoded value into Render env vars. Do not commit the JSON file or encoded secret.
+To create `GOOGLE_SERVICE_ACCOUNT_JSON_BASE64`, base64-encode the service-account JSON locally and paste only the encoded value into Render env vars. Do not commit the JSON file or encoded secret. Share the Google Sheet only with the service account email.
 
 ## Frontend: Vercel Deployment
 
@@ -52,12 +55,12 @@ Recommended settings:
 Frontend env vars:
 
 ```env
-NEXT_PUBLIC_API_BASE_URL=https://your-render-service.onrender.com/api
-NEXT_PUBLIC_GA_MEASUREMENT_ID=
-NEXT_PUBLIC_CLARITY_PROJECT_ID=
+VITE_API_BASE_URL=
+VITE_GA_MEASUREMENT_ID=
+VITE_CLARITY_PROJECT_ID=
 ```
 
-The app also supports `VITE_API_BASE_URL`, `VITE_GA_MEASUREMENT_ID`, and `VITE_CLARITY_PROJECT_ID` for local Vite-style configuration. Only public frontend variables are read by the browser bundle.
+Only public Vite variables should be configured in Vercel. Do not add Google service account JSON, Resend keys, or backend credentials to the frontend environment.
 
 ## Local Development
 
@@ -80,7 +83,7 @@ npm run dev
 For local frontend API calls, set:
 
 ```env
-NEXT_PUBLIC_API_BASE_URL=http://localhost:8000/api
+VITE_API_BASE_URL=http://localhost:8000/api
 ```
 
 ## Verification
@@ -94,7 +97,7 @@ npm run build
 
 ```bash
 cd backend
-python -m compileall app
+python3 -m compileall app
 ```
 
 Production acceptance checks:
@@ -105,3 +108,12 @@ Production acceptance checks:
 - Frontend shows success and error messages properly.
 - GA4 and Microsoft Clarity scripts load only when public IDs are configured.
 - No secrets, API keys, service-account JSON, or `.env` files are committed.
+- `CORS_ORIGIN` is restricted to production frontend origin(s).
+- Basic rate limiting or spam protection is added if spam appears after launch.
+
+## Security Notes
+
+- Store Google Sheets and Resend credentials only in Render environment variables.
+- Store only `VITE_API_BASE_URL`, `VITE_GA_MEASUREMENT_ID`, and `VITE_CLARITY_PROJECT_ID` in Vercel.
+- Never commit `.env` files, API keys, service-account JSON, base64 credential strings, or private credentials.
+- MongoDB is not required for launch and should not be configured for the lead flow.

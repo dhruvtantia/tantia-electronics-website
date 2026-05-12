@@ -1,15 +1,16 @@
 import { useEffect } from "react";
 import { SITE } from "../../config/site";
 
-export default function SEO({ title, description }) {
+export default function SEO({ title, description, keywords = [] }) {
   useEffect(() => {
     document.title = title;
     setMeta("description", description);
+    if (keywords.length > 0) setMeta("keywords", keywords.join(", "));
     setMeta("og:title", title, "property");
     setMeta("og:description", description, "property");
     setMeta("og:type", "website", "property");
     setMeta("og:site_name", SITE.businessName, "property");
-  }, [title, description]);
+  }, [title, description, keywords]);
 
   return null;
 }

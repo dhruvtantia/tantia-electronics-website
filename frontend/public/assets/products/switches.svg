@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 675" role="img" aria-labelledby="title">
+  <title id="title">Industrial switches product range</title>
+  <rect width="900" height="675" fill="#eef2f7"/>
+  <rect x="170" y="120" width="560" height="430" rx="28" fill="#101828"/>
+  <rect x="225" y="180" width="450" height="310" rx="18" fill="#f8fafc"/>
+  <g>
+    <rect x="270" y="235" width="110" height="180" rx="14" fill="#e2e8f0"/>
+    <rect x="395" y="235" width="110" height="180" rx="14" fill="#e2e8f0"/>
+    <rect x="520" y="235" width="110" height="180" rx="14" fill="#e2e8f0"/>
+    <circle cx="325" cy="325" r="34" fill="#a7191c"/>
+    <circle cx="450" cy="325" r="34" fill="#f59e0b"/>
+    <circle cx="575" cy="325" r="34" fill="#101828"/>
+  </g>
+</svg>

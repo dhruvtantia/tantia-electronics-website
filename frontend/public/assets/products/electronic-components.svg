@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 675" role="img" aria-labelledby="title">
+  <title id="title">Electronic components product range</title>
+  <rect width="900" height="675" fill="#eef2f7"/>
+  <rect x="185" y="140" width="530" height="395" rx="34" fill="#101828"/>
+  <rect x="255" y="210" width="390" height="255" rx="18" fill="#f8fafc"/>
+  <g stroke="#a7191c" stroke-width="18" stroke-linecap="round">
+    <path d="M330 275h240"/>
+    <path d="M330 335h240"/>
+    <path d="M330 395h240"/>
+  </g>
+  <g fill="#f59e0b">
+    <circle cx="330" cy="275" r="24"/>
+    <circle cx="450" cy="335" r="24"/>
+    <circle cx="570" cy="395" r="24"/>
+  </g>
+  <g stroke="#101828" stroke-width="18" stroke-linecap="round">
+    <path d="M282 170v-65M372 170v-65M462 170v-65M552 170v-65M642 170v-65"/>
+    <path d="M282 570v-65M372 570v-65M462 570v-65M552 570v-65M642 570v-65"/>
+  </g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 675" role="img" aria-labelledby="title">
+  <title id="title">Fuses and fuse holders product range</title>
+  <rect width="900" height="675" fill="#f8fafc"/>
+  <rect x="180" y="255" width="540" height="165" rx="82" fill="#101828"/>
+  <rect x="235" y="292" width="430" height="91" rx="45" fill="#e2e8f0"/>
+  <rect x="140" y="285" width="110" height="105" rx="18" fill="#a7191c"/>
+  <rect x="650" y="285" width="110" height="105" rx="18" fill="#a7191c"/>
+  <path d="M348 337h204" stroke="#f59e0b" stroke-width="32" stroke-linecap="round"/>
+  <circle cx="450" cy="337" r="48" fill="#ffffff" opacity="0.68"/>
+</svg>

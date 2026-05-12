@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 675" role="img" aria-labelledby="title">
+  <title id="title">Industrial electrical goods product range</title>
+  <rect width="900" height="675" fill="#f1f5f9"/>
+  <rect x="150" y="135" width="600" height="405" rx="26" fill="#101828"/>
+  <rect x="205" y="195" width="210" height="115" rx="14" fill="#f8fafc"/>
+  <rect x="485" y="195" width="210" height="115" rx="14" fill="#f8fafc"/>
+  <rect x="205" y="365" width="490" height="95" rx="14" fill="#e2e8f0"/>
+  <circle cx="310" cy="252" r="35" fill="#a7191c"/>
+  <circle cx="590" cy="252" r="35" fill="#f59e0b"/>
+  <path d="M290 412h320" stroke="#a7191c" stroke-width="28" stroke-linecap="round"/>
+</svg>

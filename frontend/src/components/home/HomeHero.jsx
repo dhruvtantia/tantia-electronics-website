@@ -9,7 +9,7 @@ export default function HomeHero() {
         {ASSETS.heroSlides.map((image, index) => (
           <div
             key={image}
-            className="hero-slide absolute inset-0 bg-cover bg-center"
+            className={`${ASSETS.heroSlides.length > 1 ? "hero-slide" : ""} absolute inset-0 bg-cover bg-center`}
             style={{ backgroundImage: `url(${image})`, animationDelay: `${index * 5}s` }}
             aria-hidden="true"
           />

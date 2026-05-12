@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 675" role="img" aria-labelledby="title">
+  <title id="title">Precision components product range</title>
+  <rect width="900" height="675" fill="#f8fafc"/>
+  <rect x="240" y="155" width="420" height="365" rx="28" fill="#101828"/>
+  <rect x="305" y="220" width="290" height="235" rx="18" fill="#e2e8f0"/>
+  <g fill="#a7191c">
+    <circle cx="360" cy="278" r="24"/>
+    <circle cx="450" cy="278" r="24"/>
+    <circle cx="540" cy="278" r="24"/>
+    <circle cx="360" cy="382" r="24"/>
+    <circle cx="450" cy="382" r="24"/>
+    <circle cx="540" cy="382" r="24"/>
+  </g>
+  <path d="M180 245h60M180 335h60M180 425h60M660 245h60M660 335h60M660 425h60" stroke="#f59e0b" stroke-width="28" stroke-linecap="round"/>
+</svg>

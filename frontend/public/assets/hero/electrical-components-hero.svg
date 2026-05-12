@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Electrical components and distribution supplies</title>
+  <desc id="desc">Industrial electrical components, cable reels, switches, connectors, and control parts arranged on a work surface.</desc>
+  <rect width="1800" height="1000" fill="#e8eef4"/>
+  <rect x="0" y="640" width="1800" height="360" fill="#c9d5df"/>
+  <g opacity="0.28">
+    <rect x="88" y="112" width="360" height="210" fill="#101828"/>
+    <rect x="1350" y="84" width="300" height="260" fill="#101828"/>
+    <rect x="610" y="70" width="510" height="120" fill="#a7191c"/>
+  </g>
+  <g transform="translate(120 420)">
+    <circle cx="180" cy="180" r="170" fill="#a7191c"/>
+    <circle cx="180" cy="180" r="105" fill="#f8fafc"/>
+    <circle cx="180" cy="180" r="54" fill="#101828"/>
+    <path d="M58 172h244v28H58z" fill="#f59e0b"/>
+  </g>
+  <g transform="translate(540 360)">
+    <rect width="360" height="430" rx="18" fill="#101828"/>
+    <rect x="34" y="38" width="292" height="72" rx="8" fill="#f8fafc"/>
+    <g fill="#f59e0b">
+      <circle cx="82" cy="170" r="26"/>
+      <circle cx="180" cy="170" r="26"/>
+      <circle cx="278" cy="170" r="26"/>
+    </g>
+    <g fill="#e8eef4">
+      <rect x="58" y="245" width="244" height="28" rx="14"/>
+      <rect x="58" y="308" width="244" height="28" rx="14"/>
+      <rect x="58" y="371" width="188" height="28" rx="14"/>
+    </g>
+  </g>
+  <g transform="translate(1020 410)">
+    <rect x="0" y="120" width="500" height="110" rx="24" fill="#f8fafc"/>
+    <rect x="48" y="152" width="120" height="46" rx="8" fill="#101828"/>
+    <rect x="198" y="152" width="120" height="46" rx="8" fill="#a7191c"/>
+    <rect x="348" y="152" width="104" height="46" rx="8" fill="#f59e0b"/>
+    <path d="M70 118c36-80 112-118 218-115 82 3 151 38 206 105" fill="none" stroke="#101828" stroke-width="26" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(1240 710)" fill="none" stroke="#101828" stroke-width="18" stroke-linecap="round">
+    <path d="M0 0c70-55 135-55 195 0s125 55 195 0"/>
+    <path d="M0 48c70-55 135-55 195 0s125 55 195 0" stroke="#a7191c"/>
+    <path d="M0 96c70-55 135-55 195 0s125 55 195 0" stroke="#f59e0b"/>
+  </g>
+</svg>

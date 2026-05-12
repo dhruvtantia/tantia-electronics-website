@@ -21,7 +21,11 @@ export default function ProductCategory() {
 
   return (
     <>
-      <SEO title={`${category.name} Supplier in Delhi ${SITE.businessName}`} description={category.shortDescription} />
+      <SEO
+        title={`${category.name} Supplier in Delhi ${SITE.businessName}`}
+        description={category.shortDescription}
+        keywords={[`${category.name} supplier Delhi`, `${category.name} distributor India`, `${category.name} catalogue`, "electrical goods supplier Delhi"]}
+      />
       <ProductCategoryHero category={category} />
       <section className="bg-white py-16">
         <div className="mx-auto max-w-7xl px-6 md:px-10 lg:px-16">

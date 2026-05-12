@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import SEO from "../components/common/SEO";
 import Breadcrumb from "../components/common/Breadcrumb";
 import EmptyState from "../components/common/EmptyState";
@@ -12,12 +12,21 @@ import { SITE } from "../config/site";
 
 export default function BrandDetail() {
   const { brandSlug } = useParams();
+  const location = useLocation();
   const brand = getBrandBySlug(brandSlug);
   if (!brand) return <NotFoundBrand />;
+  const productInterest = new URLSearchParams(location.search).get("product") || "";
+  const defaultMessage = productInterest
+    ? `I am interested in ${productInterest} from ${brand.name}. Please share availability, catalogue details and suitable options.`
+    : `I am interested in ${brand.name} products. Please share the latest catalogue, availability and suitable options.`;
 
   return (
     <>
-      <SEO title={`${brand.name} Distributor ${SITE.businessName}`} description={brand.shortDescription} />
+      <SEO
+        title={`${brand.name} Distributor ${SITE.businessName}`}
+        description={brand.shortDescription}
+        keywords={[brand.name, `${brand.name} distributor Delhi`, `${brand.name} catalogue`, "electrical components supplier Delhi"]}
+      />
       <BrandDetailHero brand={brand} />
       <section className="bg-white py-16">
         <div className="mx-auto max-w-7xl px-6 md:px-10 lg:px-16">
@@ -36,7 +45,7 @@ export default function BrandDetail() {
               sourcePage={`/brands/${brand.slug}`}
               title={`Request ${brand.name} catalogue`}
               description="Share your requirement and our team will respond with the latest catalogue, availability and suitable product options."
-              defaultMessage={`I am interested in ${brand.name} products. Please share the latest catalogue, availability and suitable options.`}
+              defaultMessage={defaultMessage}
               submitLabel="Request Catalogue"
             />
           </div>

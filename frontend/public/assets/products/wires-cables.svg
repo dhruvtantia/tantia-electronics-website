@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 675" role="img" aria-labelledby="title">
+  <title id="title">Wires and cables product range</title>
+  <rect width="900" height="675" fill="#f1f5f9"/>
+  <circle cx="310" cy="335" r="210" fill="#a7191c"/>
+  <circle cx="310" cy="335" r="132" fill="#f8fafc"/>
+  <circle cx="310" cy="335" r="72" fill="#101828"/>
+  <path d="M492 255c110 4 198 40 264 108" fill="none" stroke="#101828" stroke-width="42" stroke-linecap="round"/>
+  <path d="M488 340c126 0 212 38 258 112" fill="none" stroke="#f59e0b" stroke-width="34" stroke-linecap="round"/>
+  <path d="M476 430c92 6 161 35 207 88" fill="none" stroke="#64748b" stroke-width="30" stroke-linecap="round"/>
+</svg>

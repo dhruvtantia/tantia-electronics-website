@@ -1,4 +1,17 @@
-function product(name, category, description, imageUrl = "") {
+import { ASSETS } from "../config/assets";
+
+const productCategoryImage = {
+  "Wires & Cables": ASSETS.productImages["wires-cables"],
+  Switches: ASSETS.productImages.switches,
+  Fuses: ASSETS.productImages.fuses,
+  "Circuit Breakers": ASSETS.productImages["circuit-breakers"],
+  Connectors: ASSETS.productImages.connectors,
+  "Precision Components": ASSETS.productImages["precision-components"],
+  "Industrial Electrical Goods": ASSETS.productImages["industrial-electrical-goods"],
+  "Electronic Components": ASSETS.productImages["electronic-components"],
+};
+
+function product(name, category, description, imageUrl = productCategoryImage[category] || ASSETS.productPlaceholder) {
   return { name, category, description, imageUrl };
 }
 

@@ -1,13 +1,18 @@
 export const ASSETS = {
   cataloguePlaceholder: "/placeholder-catalogue.pdf",
-  heroPlaceholder:
-    "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
+  heroPlaceholder: "/assets/hero/electrical-components-hero.svg",
   heroSlides: [
-    "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1800&q=80",
-    "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=80",
-    "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&w=1800&q=80",
-    "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1800&q=80",
+    "/assets/hero/electrical-components-hero.svg",
   ],
-  productPlaceholder:
-    "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
+  productPlaceholder: "/assets/products/electronic-components.svg",
+  productImages: {
+    "wires-cables": "/assets/products/wires-cables.svg",
+    switches: "/assets/products/switches.svg",
+    fuses: "/assets/products/fuses.svg",
+    "circuit-breakers": "/assets/products/circuit-breakers.svg",
+    connectors: "/assets/products/connectors.svg",
+    "precision-components": "/assets/products/precision-components.svg",
+    "industrial-electrical-goods": "/assets/products/industrial-electrical-goods.svg",
+    "electronic-components": "/assets/products/electronic-components.svg",
+  },
 };

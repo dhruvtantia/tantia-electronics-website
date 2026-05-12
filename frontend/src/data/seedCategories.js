@@ -1,8 +1,10 @@
+import { ASSETS } from "../config/assets";
+
 export const categories = [
   {
     name: "Wires & Cables",
     slug: "wires-cables",
-    imageUrl: "",
+    imageUrl: ASSETS.productImages["wires-cables"],
     shortDescription: "Industrial and commercial wires and cable supply.",
     longDescription:
       "Source wires and cables for electrical contractors, panel builders, maintenance teams and dealer counters with catalogue-backed product discovery.",
@@ -15,7 +17,7 @@ export const categories = [
   {
     name: "Switches",
     slug: "switches",
-    imageUrl: "",
+    imageUrl: ASSETS.productImages.switches,
     shortDescription: "Switches and switchgear-adjacent product lines.",
     longDescription:
       "Browse switch product ranges for trade counters, projects, repairs and industrial electrical supply requirements.",
@@ -28,7 +30,7 @@ export const categories = [
   {
     name: "Fuses",
     slug: "fuses",
-    imageUrl: "",
+    imageUrl: ASSETS.productImages.fuses,
     shortDescription: "Fuse and protection product options for B2B buyers.",
     longDescription:
       "Find fuse product lines for panels, maintenance, industrial procurement and replacement requirements.",
@@ -41,7 +43,7 @@ export const categories = [
   {
     name: "Circuit Breakers",
     slug: "circuit-breakers",
-    imageUrl: "",
+    imageUrl: ASSETS.productImages["circuit-breakers"],
     shortDescription: "Circuit protection product ranges for electrical systems.",
     longDescription:
       "Source circuit breakers and protection products for panels, electrical contractors, dealers and industrial buyers.",
@@ -54,7 +56,7 @@ export const categories = [
   {
     name: "Connectors",
     slug: "connectors",
-    imageUrl: "",
+    imageUrl: ASSETS.productImages.connectors,
     shortDescription: "Connectors for electrical and electronics applications.",
     longDescription:
       "Browse connector product ranges for electronic components, panels, repairs and industrial electrical supply.",
@@ -67,7 +69,7 @@ export const categories = [
   {
     name: "Precision Components",
     slug: "precision-components",
-    imageUrl: "",
+    imageUrl: ASSETS.productImages["precision-components"],
     shortDescription: "Precision components and tools for technical buyers.",
     longDescription:
       "Find precision components and associated product lines for OEM, maintenance, workshop and industrial procurement teams.",
@@ -80,7 +82,7 @@ export const categories = [
   {
     name: "Industrial Electrical Goods",
     slug: "industrial-electrical-goods",
-    imageUrl: "",
+    imageUrl: ASSETS.productImages["industrial-electrical-goods"],
     shortDescription: "Industrial electrical products for B2B supply.",
     longDescription:
       "Source industrial electrical goods across categories for contractors, dealers, panel builders and maintenance buyers.",
@@ -93,7 +95,7 @@ export const categories = [
   {
     name: "Electronic Components",
     slug: "electronic-components",
-    imageUrl: "",
+    imageUrl: ASSETS.productImages["electronic-components"],
     shortDescription: "Electronic components and workshop supply products.",
     longDescription:
       "Browse electronic component product ranges for OEMs, repair teams, dealers, procurement teams and industrial buyers.",

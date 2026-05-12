@@ -14,7 +14,7 @@ export default function PrivacyPolicy() {
         <h2>How We Use Information</h2>
         <p>We use enquiry information to respond to product, catalogue, availability and quotation requests. We use journey information to improve the website, understand lead context, and reduce irrelevant or fraudulent submissions.</p>
         <h2>Storage And Processors</h2>
-        <p>Enquiries may be sent by email to {SITE.email} and stored in a lead backup such as Google Sheets. If analytics tools such as PostHog, Google Analytics or Microsoft Clarity are enabled, their use will be limited to website analytics, lead attribution and user experience improvement.</p>
+        <p>Enquiries may be sent by email to {SITE.email} and stored in a lead backup such as Google Sheets. If analytics tools such as Google Analytics or Microsoft Clarity are enabled, their use will be limited to website analytics, lead attribution and user experience improvement.</p>
         <h2>Cookies And Local Storage</h2>
         <p>The website may use first-party local storage or session storage to maintain a visitor/session identifier and a short page-visit summary. Non-essential third-party analytics or session replay should only be enabled with the required consent controls.</p>
         <h2>Data Retention</h2>

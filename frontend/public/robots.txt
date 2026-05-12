@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tantiaelectronics.com/sitemap.xml
+Sitemap: https://tantiaelectronic.com/sitemap.xml

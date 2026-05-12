@@ -8,7 +8,7 @@ export const SITE = {
   address: "Shop No. 422, Lajpat Rai Market, Chandni Chowk, Delhi, 110006",
   mapUrl:
     "https://www.google.com/maps/search/?api=1&query=Shop%20No.%20422%2C%20Lajpat%20Rai%20Market%2C%20Chandni%20Chowk%2C%20Delhi%2C%20110006",
-  domain: "https://tantiaelectronics.com",
+  domain: "https://tantiaelectronic.com",
   businessHours: {
     days: "Monday - Saturday",
     time: "10:00 AM - 7:00 PM",
